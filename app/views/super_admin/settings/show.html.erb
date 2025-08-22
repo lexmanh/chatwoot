@@ -13,6 +13,7 @@
   </div>
 </header>
 <section class="main-content__body px-8">
+  <% if false %>
   <% if Redis::Alfred.get(Redis::Alfred::CHATWOOT_INSTALLATION_CONFIG_RESET_WARNING) %>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
     <strong class="font-bold">Alert!</strong>
@@ -69,7 +70,7 @@
     <% end %>
 
 
-    <div class="flex p-4 outline outline-1 outline-n-container rounded-lg mt-4 items-start md:items-center shadow-sm flex-col md:flex-row">
+    <div class="flex p-4 outline outline-1 outline-n-container rounded-lg mt-4 items-start md:items-center shadow-sm flex-col md:flex-row d-none">
       <div class="flex flex-col flex-grow gap-1">
         <h2 class="h-5 leading-5 text-n-slate-12 text-sm font-medium">Need help?</h2>
         <p class="text-n-slate-11 m-0 text-sm">Do you face any issues? We are here to help.</p>
@@ -87,6 +88,9 @@
         </button>
       <% end %>
     </div>
+
+    <% end %>
+
     <div class="mt-10 py-4">
       <h3 class="h-5 leading-5 text-n-slate-12 font-medium text-base">Features</h3>
     </div>

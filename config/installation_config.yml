@@ -31,29 +31,29 @@
   display_title: 'Logo Dark Mode'
   description: 'The logo that would be used on the dashboard, login page etc. for dark mode'
 - name: BRAND_URL
-  value: 'https://www.chatwoot.com'
+  value: 'https://www.uef.edu.vn'
   display_title: 'Brand URL'
   description: 'The URL that would be used in emails under the section “Powered By”'
 - name: WIDGET_BRAND_URL
-  value: 'https://www.chatwoot.com'
+  value: 'https://www.uef.edu.vn'
   display_title: 'Widget Brand URL'
   description: 'The URL that would be used in the widget under the section “Powered By”'
 - name: BRAND_NAME
-  value: 'Chatwoot'
+  value: 'UEF'
   display_title: 'Brand Name'
   description: 'The name that would be used in emails and the widget'
 - name: TERMS_URL
-  value: 'https://www.chatwoot.com/terms-of-service'
+  value: 'https://www.uef.edu.vn/terms-of-service'
   display_title: 'Terms URL'
   description: 'The terms of service URL displayed in Signup Page'
 - name: PRIVACY_URL
-  value: 'https://www.chatwoot.com/privacy-policy'
+  value: 'https://www.uef.edu.vn/privacy-policy'
   display_title: 'Privacy URL'
   description: 'The privacy policy URL displayed in the app'
 - name: DISPLAY_MANIFEST
   value: true
-  display_title: 'Chatwoot Metadata'
-  description: 'Display default Chatwoot metadata like favicons and upgrade warnings'
+  display_title: 'UEF Help Center Metadata'
+  description: 'Display default UEF Help Center metadata like favicons and upgrade warnings'
   type: boolean
 # ------- End of Branding Related Config ------- #
 
@@ -241,10 +241,10 @@
 
 # ------- Chatwoot Internal Config for Self Hosted ----#
 - name: INSTALLATION_PRICING_PLAN
-  value: 'community'
+  value: 'enterprise'
   description: 'The pricing plan for the installation, retrieved from the billing API'
 - name: INSTALLATION_PRICING_PLAN_QUANTITY
-  value: 0
+  value: 9999
   description: 'The number of licenses purchased for the installation, retrieved from the billing API'
 - name: CHATWOOT_SUPPORT_WEBSITE_TOKEN
   value:
@@ -435,3 +435,22 @@
   locked: false
   description: 'Zone ID for the Cloudflare domain'
 ## ------ End of Configs added for Cloudflare ------ ##
+
+## ------ Configs added for UEF ID ------ ##
+- name: UEF_ID_OAUTH_CLIENT_ID
+  display_title: 'UEF ID OAuth Client ID'
+  value:
+  locked: false
+  description: 'UEF ID OAuth Client ID for authentication'
+- name: UEF_ID_OAUTH_CLIENT_SECRET
+  display_title: 'UEF ID OAuth Client Secret'
+  value:
+  locked: false
+  description: 'UEF ID OAuth Client Secret for authentication'
+  type: secret
+- name: UEF_ID_OAUTH_REDIRECT_URI
+  display_title: 'UEF ID OAuth Redirect URI'
+  value:
+  locked: false
+  description: 'The redirect URI configured in your UEF ID OAuth app'
+## ------ End of Configs added for UEF ID ------ ##
