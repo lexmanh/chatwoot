@@ -238,6 +238,10 @@ Rails.application.routes.draw do
             resource :authorization, only: [:create]
           end
 
+          namespace :uef_id do
+            resource :authorization, only: [:create]
+          end
+
           namespace :instagram do
             resource :authorization, only: [:create]
           end
@@ -523,6 +527,7 @@ Rails.application.routes.draw do
   get 'google/callback', to: 'google/callbacks#show'
   get 'instagram/callback', to: 'instagram/callbacks#show'
   get 'notion/callback', to: 'notion/callbacks#show'
+  get 'uef_id/callback', to: 'uef_id/callbacks#show'
   # ----------------------------------------------------------------------
   # Routes for external service verifications
   get '.well-known/assetlinks.json' => 'android_app#assetlinks'

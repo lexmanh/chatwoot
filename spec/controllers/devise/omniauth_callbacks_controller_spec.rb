@@ -5,143 +5,138 @@ RSpec.describe 'DeviseOverrides::OmniauthCallbacksController', type: :request do
   let(:user_double) { object_double(:user) }
   let(:email_validation_service) { instance_double(Account::SignUpEmailValidationService) }
 
-  def set_omniauth_config(for_email = 'test@example.com')
+  def set_omniauth_config(provider, for_email = 'test@example.com')
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
-      provider: 'google',
-      uid: '123545',
+    auth_hash = OmniAuth::AuthHash.new(
+      provider: provider,
+      uid: provider == 'google_oauth2' ? '123545' : 'keycloak-123545',
       info: {
         name: 'test',
         email: for_email,
-        image: 'https://example.com/image.jpg'
+        image: provider == 'google_oauth2' ? 'https://example.com/image.jpg' : nil
       }
     )
+    OmniAuth.config.mock_auth[provider.to_sym] = auth_hash
   end
 
   before do
     allow(Account::SignUpEmailValidationService).to receive(:new).and_return(email_validation_service)
+    allow(GlobalConfigService).to receive(:load).with('UEF_ID_OAUTH_CLIENT_ID', nil).and_return('chatwoot-client')
+    allow(GlobalConfigService).to receive(:load).with('UEF_ID_OAUTH_CLIENT_SECRET', nil).and_return('keycloak-secret')
+    allow(GlobalConfigService).to receive(:load).with('UEF_ID_OAUTH_REALM', nil).and_return('uef_id')
+    allow(GlobalConfigService).to receive(:load).with('KEYCLOAK_URL', 'https://sso.uef.edu.vn').and_return('https://sso.uef.edu.vn')
   end
 
-  describe '#omniauth_sucess' do
+  describe '#omniauth_success' do
     before do
       GlobalConfig.clear_cache
     end
 
-    it 'allows signup' do
-      with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
-        set_omniauth_config('test_not_preset@example.com')
-        allow(AccountBuilder).to receive(:new).and_return(account_builder)
-        allow(account_builder).to receive(:perform).and_return(user_double)
-        allow(Avatar::AvatarFromUrlJob).to receive(:perform_later).and_return(true)
-        allow(email_validation_service).to receive(:perform).and_return(true)
+    %w[google_oauth2 uef_id].each do |provider|
+      describe "for #{provider}" do
+        it 'allows signup' do
+          with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
+            set_omniauth_config(provider, 'test_not_preset@example.com')
+            allow(AccountBuilder).to receive(:new).and_return(account_builder)
+            allow(account_builder).to receive(:perform).and_return(user_double)
+            allow(Avatar::AvatarFromUrlJob).to receive(:perform_later).and_return(true) if provider == 'google_oauth2'
+            allow(email_validation_service).to receive(:perform).and_return(true)
 
-        get '/omniauth/google_oauth2/callback'
+            get "/omniauth/#{provider}/callback"
 
-        # expect a 302 redirect to auth/google_oauth2/callback
-        expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
-        follow_redirect!
+            expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+            follow_redirect!
 
-        expect(AccountBuilder).to have_received(:new).with({
-                                                             account_name: 'example',
-                                                             user_full_name: 'test',
-                                                             email: 'test_not_preset@example.com',
-                                                             locale: I18n.locale,
-                                                             confirmed: nil
-                                                           })
-        expect(account_builder).to have_received(:perform)
-      end
-    end
-
-    it 'blocks personal accounts signup' do
-      with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
-        set_omniauth_config('personal@gmail.com')
-        allow(email_validation_service).to receive(:perform).and_raise(CustomExceptions::Account::InvalidEmail.new({ valid: false, disposable: nil }))
-
-        get '/omniauth/google_oauth2/callback'
-
-        # expect a 302 redirect to auth/google_oauth2/callback
-        expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
-        follow_redirect!
-
-        # expect a 302 redirect to app/login with error disallowing personal accounts
-        expect(response).to redirect_to(%r{/app/login\?error=business-account-only$})
-      end
-    end
-
-    it 'blocks personal accounts signup with different Gmail case variations' do
-      with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
-        # Test different case variations of Gmail
-        ['personal@Gmail.com', 'personal@GMAIL.com', 'personal@Gmail.COM'].each do |email|
-          set_omniauth_config(email)
-          allow(email_validation_service).to receive(:perform).and_raise(CustomExceptions::Account::InvalidEmail.new({ valid: false,
-                                                                                                                       disposable: nil }))
-
-          get '/omniauth/google_oauth2/callback'
-
-          # expect a 302 redirect to auth/google_oauth2/callback
-          expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
-          follow_redirect!
-
-          # expect a 302 redirect to app/login with error disallowing personal accounts
-          expect(response).to redirect_to(%r{/app/login\?error=business-account-only$})
+            expect(AccountBuilder).to have_received(:new).with({
+                                                                 account_name: 'example',
+                                                                 user_full_name: 'test',
+                                                                 email: 'test_not_preset@example.com',
+                                                                 locale: I18n.locale,
+                                                                 confirmed: nil
+                                                               })
+            expect(account_builder).to have_received(:perform)
+          end
         end
-      end
-    end
 
-    # This test does not affect line coverage, but it is important to ensure that the logic
-    # does not allow any signup if the ENV explicitly disables it
-    it 'blocks signup if ENV disabled' do
-      with_modified_env ENABLE_ACCOUNT_SIGNUP: 'false', FRONTEND_URL: 'http://www.example.com' do
-        set_omniauth_config('does-not-exist-for-sure@example.com')
-        allow(email_validation_service).to receive(:perform).and_return(true)
+        it 'blocks personal accounts signup' do
+          with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
+            set_omniauth_config(provider, 'personal@gmail.com')
+            allow(email_validation_service).to receive(:perform).and_raise(
+              CustomExceptions::Account::InvalidEmail.new({ valid: false, disposable: nil })
+            )
 
-        get '/omniauth/google_oauth2/callback'
+            get "/omniauth/#{provider}/callback"
 
-        # expect a 302 redirect to auth/google_oauth2/callback
-        expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
-        follow_redirect!
+            expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+            follow_redirect!
 
-        # expect a 302 redirect to app/login with error disallowing signup
-        expect(response).to redirect_to(%r{/app/login\?error=no-account-found$})
-      end
-    end
+            expect(response).to redirect_to(%r{/app/login\?error=business-account-only$})
+          end
+        end
 
-    it 'allows login' do
-      with_modified_env FRONTEND_URL: 'http://www.example.com' do
-        create(:user, email: 'test@example.com')
-        set_omniauth_config('test@example.com')
+        it 'blocks personal accounts signup with different Gmail case variations' do
+          with_modified_env ENABLE_ACCOUNT_SIGNUP: 'true', FRONTEND_URL: 'http://www.example.com' do
+            ['personal@Gmail.com', 'personal@GMAIL.com', 'personal@Gmail.COM'].each do |email|
+              set_omniauth_config(provider, email)
+              allow(email_validation_service).to receive(:perform).and_raise(
+                CustomExceptions::Account::InvalidEmail.new({ valid: false, disposable: nil })
+              )
 
-        get '/omniauth/google_oauth2/callback'
-        # expect a 302 redirect to auth/google_oauth2/callback
-        expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
+              get "/omniauth/#{provider}/callback"
 
-        follow_redirect!
-        expect(response).to redirect_to(%r{/app/login\?email=.+&sso_auth_token=.+$})
+              expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+              follow_redirect!
 
-        # expect app/login page to respond with 200 and render
-        follow_redirect!
-        expect(response).to have_http_status(:ok)
-      end
-    end
+              expect(response).to redirect_to(%r{/app/login\?error=business-account-only$})
+            end
+          end
+        end
 
-    # from a line coverage point of view this may seem redundant
-    # but to ensure that the logic allows for existing users even if they have a gmail account
-    # we need to test this explicitly
-    it 'allows personal account login' do
-      with_modified_env FRONTEND_URL: 'http://www.example.com' do
-        create(:user, email: 'personal-existing@gmail.com')
-        set_omniauth_config('personal-existing@gmail.com')
+        it 'blocks signup if ENV disabled' do
+          with_modified_env ENABLE_ACCOUNT_SIGNUP: 'false', FRONTEND_URL: 'http://www.example.com' do
+            set_omniauth_config(provider, 'does-not-exist-for-sure@example.com')
+            allow(email_validation_service).to receive(:perform).and_return(true)
 
-        get '/omniauth/google_oauth2/callback'
-        # expect a 302 redirect to auth/google_oauth2/callback
-        expect(response).to redirect_to('http://www.example.com/auth/google_oauth2/callback')
+            get "/omniauth/#{provider}/callback"
 
-        follow_redirect!
-        expect(response).to redirect_to(%r{/app/login\?email=.+&sso_auth_token=.+$})
+            expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+            follow_redirect!
 
-        # expect app/login page to respond with 200 and render
-        follow_redirect!
-        expect(response).to have_http_status(:ok)
+            expect(response).to redirect_to(%r{/app/login\?error=no-account-found$})
+          end
+        end
+
+        it 'allows login' do
+          with_modified_env FRONTEND_URL: 'http://www.example.com' do
+            create(:user, email: 'test@example.com')
+            set_omniauth_config(provider, 'test@example.com')
+
+            get "/omniauth/#{provider}/callback"
+            expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+
+            follow_redirect!
+            expect(response).to redirect_to(%r{/app/login\?email=.+&sso_auth_token=.+$})
+
+            follow_redirect!
+            expect(response).to have_http_status(:ok)
+          end
+        end
+
+        it 'allows personal account login' do
+          with_modified_env FRONTEND_URL: 'http://www.example.com' do
+            create(:user, email: 'personal-existing@gmail.com')
+            set_omniauth_config(provider, 'personal-existing@gmail.com')
+
+            get "/omniauth/#{provider}/callback"
+            expect(response).to redirect_to("http://www.example.com/auth/#{provider}/callback")
+
+            follow_redirect!
+            expect(response).to redirect_to(%r{/app/login\?email=.+&sso_auth_token=.+$})
+
+            follow_redirect!
+            expect(response).to have_http_status(:ok)
+          end
+        end
       end
     end
   end

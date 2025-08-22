@@ -100,6 +100,12 @@ microsoft:
   enabled: true
   icon: 'icon-microsoft'
   config_key: 'microsoft'
+uef_id:
+  name: 'UEF ID'
+  description: 'Configuration for setting up UEF ID Integration'
+  enabled: true
+  icon: 'icon-uef-id'
+  config_key: 'uef_id'
 
 # ------- Third-party Integrations ------- #
 linear:
