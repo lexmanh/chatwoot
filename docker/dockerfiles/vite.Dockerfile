@@ -1,4 +1,4 @@
-FROM chatwoot:development
+FROM cr.uef.edu.vn/uef/chatwoot:development
 
 ENV PNPM_HOME="/root/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
