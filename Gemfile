@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.4.4'
+ruby '3.4.5'
 
 ##-- base gems for rails --##
 gem 'rack-cors', '2.0.0', require: 'rack/cors'
@@ -56,7 +56,7 @@ gem 'image_processing'
 
 ##-- gems for database --#
 gem 'groupdate'
-gem 'pg'
+gem 'pg', '>= 1.6.0'
 gem 'redis'
 gem 'redis-namespace'
 # super fast record imports in bulk

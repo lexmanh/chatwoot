@@ -609,7 +609,10 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
+    pg (1.6.1)
+    pg (1.6.1-arm64-darwin)
+    pg (1.6.1-x86_64-darwin)
+    pg (1.6.1-x86_64-linux)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
@@ -1036,7 +1039,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (>= 1.1.3)
   omniauth-oauth2
   omniauth-rails_csrf_protection (~> 1.0, >= 1.0.2)
-  pg
+  pg (>= 1.6.0)
   pg_search
   pgvector
   procore-sift
@@ -1097,7 +1100,7 @@ DEPENDENCIES
   working_hours
 
 RUBY VERSION
-   ruby 3.4.4p34
+   ruby 3.4.5p51
 
 BUNDLED WITH
    2.5.16

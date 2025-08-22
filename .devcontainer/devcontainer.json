@@ -45,5 +45,8 @@
     "8025": {
       "label": "Mailhog UI"
     }
-  }
+  },
+
+
+  "workspaceFolder": "~/Documents/GitHub/chatwoot"
 }
