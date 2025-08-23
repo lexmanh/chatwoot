@@ -1,37 +1,37 @@
 {
   "GENERAL_SETTINGS": {
     "LIMIT_MESSAGES": {
-      "CONVERSATION": "You have exceeded the conversation limit. Hacker plan allows only 500 conversations.",
-      "INBOXES": "You have exceeded the inbox limit. Hacker plan only supports website live-chat. Additional inboxes like email, WhatsApp etc. require a paid plan.",
-      "AGENTS": "You have exceeded the agent limit. Your plan only allows {allowedAgents} agents.",
-      "NON_ADMIN": "Please contact your administrator to upgrade the plan and continue using all features."
+      "CONVERSATION": "Bạn đã vượt quá giới hạn cuộc trò chuyện. Gói Hacker chỉ cho phép 500 cuộc trò chuyện.",
+      "INBOXES": "Bạn đã vượt quá giới hạn hộp thư. Gói Hacker chỉ hỗ trợ trò chuyện trực tiếp trên website. Các hộp thư bổ sung như email, WhatsApp, v.v. yêu cầu gói trả phí.",
+      "AGENTS": "Bạn đã vượt quá giới hạn đại lý. Gói của bạn chỉ cho phép {allowedAgents} đại lý.",
+      "NON_ADMIN": "Vui lòng liên hệ với quản trị viên của bạn để nâng cấp gói và tiếp tục sử dụng tất cả các tính năng."
     },
     "TITLE": "Cài đặt tài khoản",
     "SUBMIT": "Cập nhật cài đặt",
-    "BACK": "Trờ về",
-    "DISMISS": "Dismiss",
+    "BACK": "Trở về",
+    "DISMISS": "Bỏ qua",
     "UPDATE": {
       "ERROR": "Không thể cập nhật cài đặt, hãy thử lại!",
       "SUCCESS": "Đã cập nhật thành công cài đặt tài khoản"
     },
     "ACCOUNT_DELETE_SECTION": {
-      "TITLE": "Delete your Account",
-      "NOTE": "Once you delete your account, all your data will be deleted.",
-      "BUTTON_TEXT": "Delete Your Account",
+      "TITLE": "Xoá tài khoản của bạn",
+      "NOTE": "Khi bạn xoá tài khoản, tất cả dữ liệu của bạn sẽ bị xoá.",
+      "BUTTON_TEXT": "Xoá tài khoản của bạn",
       "CONFIRM": {
-        "TITLE": "Delete Account",
-        "MESSAGE": "Deleting your Account is irreversible. Enter your account name below to confirm you want to permanently delete it.",
+        "TITLE": "Xoá tài khoản",
+        "MESSAGE": "Việc xoá tài khoản của bạn là không thể khôi phục. Nhập tên tài khoản của bạn bên dưới để xác nhận bạn muốn xoá vĩnh viễn nó.",
         "BUTTON_TEXT": "Xoá",
         "DISMISS": "Huỷ",
         "PLACE_HOLDER": "Vui lòng điền {accountName} để xác nhận"
       },
-      "SUCCESS": "Account marked for deletion",
-      "FAILURE": "Could not delete account, try again!",
+      "SUCCESS": "Tài khoản đã được đánh dấu để xoá",
+      "FAILURE": "Không thể xoá tài khoản, hãy thử lại!",
       "SCHEDULED_DELETION": {
-        "TITLE": "Account Scheduled for Deletion",
-        "MESSAGE_MANUAL": "This account is scheduled for deletion on {deletionDate}. This was requested by an administrator. You can cancel the deletion before this date.",
-        "MESSAGE_INACTIVITY": "This account is scheduled for deletion on {deletionDate} due to account inactivity. You can cancel the deletion before this date.",
-        "CLEAR_BUTTON": "Cancel Scheduled Deletion"
+        "TITLE": "Tài khoản đã được lên lịch xoá",
+        "MESSAGE_MANUAL": "Tài khoản này đã được lên lịch xoá vào {deletionDate}. Việc này được yêu cầu bởi một quản trị viên. Bạn có thể huỷ bỏ việc xoá trước ngày này.",
+        "MESSAGE_INACTIVITY": "Tài khoản này đã được lên lịch xoá vào {deletionDate} do không hoạt động. Bạn có thể huỷ bỏ việc xoá trước ngày này.",
+        "CLEAR_BUTTON": "Huỷ bỏ việc xoá đã lên lịch"
       }
     },
     "FORM": {
@@ -45,32 +45,32 @@
         "NOTE": "ID này là bắt buộc nếu bạn đang xây dựng tích hợp dựa trên API"
       },
       "AUTO_RESOLVE": {
-        "TITLE": "Auto-resolve conversations",
-        "NOTE": "This configuration would allow you to automatically resolve the conversation after a certain period of inactivity.",
+        "TITLE": "Tự động giải quyết cuộc trò chuyện",
+        "NOTE": "Cấu hình này sẽ cho phép bạn tự động giải quyết cuộc trò chuyện sau một khoảng thời gian không hoạt động nhất định.",
         "DURATION": {
-          "LABEL": "Inactivity duration",
-          "HELP": "Time period of inactivity after which conversation is auto-resolved",
+          "LABEL": "Thời gian không hoạt động",
+          "HELP": "Khoảng thời gian không hoạt động sau đó cuộc trò chuyện sẽ được tự động giải quyết",
           "PLACEHOLDER": "30",
-          "ERROR": "Auto resolve duration should be between 10 minutes and 999 days",
+          "ERROR": "Thời gian không hoạt động để giải quyết tự động phải nằm trong khoảng từ 10 phút đến 999 ngày",
           "API": {
-            "SUCCESS": "Auto resolve settings updated successfully",
-            "ERROR": "Failed to update auto resolve settings"
+            "SUCCESS": "Cài đặt tự động giải quyết đã được cập nhật thành công",
+            "ERROR": "Không thể cập nhật cài đặt tự động giải quyết"
           }
         },
         "MESSAGE": {
-          "LABEL": "Custom auto-resolution message",
-          "PLACEHOLDER": "Conversation was marked resolved by system due to 15 days of inactivity",
-          "HELP": "Message sent to the customer after conversation is auto-resolved"
+          "LABEL": "Tin nhắn giải quyết tùy chỉnh",
+          "PLACEHOLDER": "Cuộc trò chuyện đã được đánh dấu là đã giải quyết bởi hệ thống do 15 ngày không hoạt động",
+          "HELP": "Tin nhắn được gửi đến khách hàng sau khi cuộc trò chuyện được tự động giải quyết"
         },
-        "PREFERENCES": "Preferences",
+        "PREFERENCES": "Tùy chọn",
         "LABEL": {
-          "LABEL": "Add label after auto-resolution",
-          "PLACEHOLDER": "Select a label"
+          "LABEL": "Thêm nhãn sau khi tự động giải quyết",
+          "PLACEHOLDER": "Chọn một nhãn"
         },
         "IGNORE_WAITING": {
-          "LABEL": "Skip conversations waiting for agent’s reply"
+          "LABEL": "Bỏ qua các cuộc trò chuyện đang chờ phản hồi của đại diện"
         },
-        "UPDATE_BUTTON": "Save Changes"
+        "UPDATE_BUTTON": "Lưu thay đổi"
       },
       "NAME": {
         "LABEL": "Tên tài khoản",
@@ -93,42 +93,42 @@
         "ERROR": ""
       },
       "AUTO_RESOLVE_IGNORE_WAITING": {
-        "LABEL": "Exclude unattended conversations",
-        "HELP": "When enabled, the system will skip resolving conversations that are still waiting for an agent's reply."
+        "LABEL": "Bỏ qua các cuộc trò chuyện đang chờ phản hồi của đại diện",
+        "HELP": "Khi được kích hoạt, hệ thống sẽ bỏ qua việc giải quyết các cuộc trò chuyện vẫn đang chờ phản hồi của đại diện."
       },
       "AUDIO_TRANSCRIPTION": {
-        "TITLE": "Transcribe Audio Messages",
-        "NOTE": "Automatically transcribe audio messages in conversations. Generate a text transcript whenever an audio message is sent or received, and display it alongside the message.",
+        "TITLE": "Chuyển đổi tin nhắn âm thanh",
+        "NOTE": "Tự động chuyển đổi tin nhắn âm thanh trong các cuộc trò chuyện. Tạo một bản sao văn bản mỗi khi một tin nhắn âm thanh được gửi hoặc nhận, và hiển thị nó cùng với tin nhắn.",
         "API": {
-          "SUCCESS": "Audio transcription setting updated successfully",
-          "ERROR": "Failed to update audio transcription setting"
+          "SUCCESS": "Cài đặt chuyển đổi âm thanh đã được cập nhật thành công",
+          "ERROR": "Không thể cập nhật cài đặt chuyển đổi âm thanh"
         }
       },
       "AUTO_RESOLVE_DURATION": {
-        "LABEL": "Inactivity duration for resolution",
-        "HELP": "Duration after a conversation should auto resolve if there is no activity",
+        "LABEL": "Thời gian không hoạt động để giải quyết",
+        "HELP": "Thời gian sau khi một cuộc trò chuyện nên tự động giải quyết nếu không có hoạt động",
         "PLACEHOLDER": "30",
-        "ERROR": "Auto resolve duration should be between 10 minutes and 999 days",
+        "ERROR": "Thời gian tự động giải quyết phải từ 10 phút đến 999 ngày",
         "API": {
-          "SUCCESS": "Auto resolve settings updated successfully",
-          "ERROR": "Failed to update auto resolve settings"
+          "SUCCESS": "Cài đặt tự động giải quyết đã được cập nhật thành công",
+          "ERROR": "Không thể cập nhật cài đặt tự động giải quyết"
         },
         "UPDATE_BUTTON": "Cập nhật",
-        "MESSAGE_LABEL": "Custom resolution message",
-        "MESSAGE_PLACEHOLDER": "Conversation was marked resolved by system due to 15 days of inactivity",
-        "MESSAGE_HELP": "This message is sent to the customer when a conversation is automatically resolved by the system due to inactivity."
+        "MESSAGE_LABEL": "Tin nhắn giải quyết tùy chỉnh",
+        "MESSAGE_PLACEHOLDER": "Cuộc trò chuyện đã được đánh dấu là đã giải quyết bởi hệ thống do 15 ngày không hoạt động",
+        "MESSAGE_HELP": "Tin nhắn này được gửi đến khách hàng khi một cuộc trò chuyện được tự động giải quyết bởi hệ thống do không hoạt động."
       },
       "FEATURES": {
         "INBOUND_EMAIL_ENABLED": "Tính liên tục của cuộc trò chuyện với email được kích hoạt cho tài khoản của bạn.",
         "CUSTOM_EMAIL_DOMAIN_ENABLED": "Bạn có thể nhận email trong miền tùy chỉnh của mình ngay bây giờ."
       }
     },
-    "UPDATE_CHATWOOT": "Đã có bản cập nhật {latestChatwootVersion} cho Chatwoot. Vui lòng cập nhật phiên bản của bạn.",
+    "UPDATE_CHATWOOT": "Đã có bản cập nhật {latestUEFSupportHubVersion} cho UEFSupportHub. Vui lòng cập nhật phiên bản của bạn.",
     "LEARN_MORE": "Tìm hiểu thêm",
-    "PAYMENT_PENDING": "Your payment is pending. Please update your payment information to continue using Chatwoot",
-    "UPGRADE": "Upgrade to continue using Chatwoot",
-    "LIMITS_UPGRADE": "Your account has exceeded the usage limits, please upgrade your plan to continue using Chatwoot",
-    "OPEN_BILLING": "Open billing"
+    "PAYMENT_PENDING": "Thanh toán của bạn đang chờ xử lý. Vui lòng cập nhật thông tin thanh toán của bạn để tiếp tục sử dụng UEFSupportHub",
+    "UPGRADE": "Nâng cấp để tiếp tục sử dụng UEFSupportHub",
+    "LIMITS_UPGRADE": "Tài khoản của bạn đã vượt quá giới hạn sử dụng, vui lòng nâng cấp gói của bạn để tiếp tục sử dụng UEFSupportHub",
+    "OPEN_BILLING": "Mở thanh toán"
   },
   "FORMS": {
     "MULTISELECT": {
@@ -165,16 +165,16 @@
       "assigned_conversation_new_message": "Tin nhắn mới",
       "participating_conversation_new_message": "Tin nhắn mới",
       "conversation_mention": "Nhắc đến",
-      "sla_missed_first_response": "SLA Missed",
-      "sla_missed_next_response": "SLA Missed",
-      "sla_missed_resolution": "SLA Missed"
+      "sla_missed_first_response": "SLA bị bỏ lỡ",
+      "sla_missed_next_response": "SLA bị bỏ lỡ",
+      "sla_missed_resolution": "SLA bị bỏ lỡ"
     }
   },
   "NETWORK": {
     "NOTIFICATION": {
       "OFFLINE": "Không Trực Tuyến",
-      "RECONNECTING": "Reconnecting...",
-      "RECONNECT_SUCCESS": "Reconnected"
+      "RECONNECTING": "Đang kết nối lại...",
+      "RECONNECT_SUCCESS": "Kết nối lại thành công"
     },
     "BUTTON": {
       "REFRESH": "Làm mới"
@@ -194,9 +194,9 @@
       "ADD_LABEL": "Thêm nhãn vào hội thoại",
       "REMOVE_LABEL": "Xoá nhãn khỏi hội thoại",
       "SETTINGS": "Cài đặt",
-      "AI_ASSIST": "AI Assist",
-      "APPEARANCE": "Appearance",
-      "SNOOZE_NOTIFICATION": "Snooze Notification"
+      "AI_ASSIST": "Trợ lý AI",
+      "APPEARANCE": "Giao diện",
+      "SNOOZE_NOTIFICATION": "Tạm dừng thông báo"
     },
     "COMMANDS": {
       "GO_TO_CONVERSATION_DASHBOARD": "Đi tới Trang tổng quan hội thoại",
@@ -218,8 +218,8 @@
       "GO_TO_NOTIFICATIONS": "Đi đến Thông báo",
       "ADD_LABELS_TO_CONVERSATION": "Thêm nhãn vào hội thoại",
       "ASSIGN_AN_AGENT": "Gán cho tổng đài viên",
-      "AI_ASSIST": "AI Assist",
-      "ASSIGN_PRIORITY": "Assign priority",
+      "AI_ASSIST": "Trợ lý AI",
+      "ASSIGN_PRIORITY": "Gán độ ưu tiên",
       "ASSIGN_A_TEAM": "Phân công một nhóm",
       "MUTE_CONVERSATION": "Tắt tiếng hội thoại",
       "UNMUTE_CONVERSATION": "Bật tiếng hội thoại",
@@ -231,21 +231,21 @@
       "UNTIL_NEXT_REPLY": "Cho đến phản hồi kế tiếp",
       "UNTIL_NEXT_WEEK": "Cho đến tuần sau",
       "UNTIL_TOMORROW": "Cho đến ngày mai",
-      "UNTIL_NEXT_MONTH": "Until next month",
-      "AN_HOUR_FROM_NOW": "Until an hour from now",
-      "UNTIL_CUSTOM_TIME": "Custom...",
-      "CHANGE_APPEARANCE": "Change Appearance",
-      "LIGHT_MODE": "Light",
-      "DARK_MODE": "Dark",
-      "SYSTEM_MODE": "System",
-      "SNOOZE_NOTIFICATION": "Snooze Notification"
+      "UNTIL_NEXT_MONTH": "Cho đến tháng sau",
+      "AN_HOUR_FROM_NOW": "Cho đến một giờ nữa",
+      "UNTIL_CUSTOM_TIME": "Tùy chỉnh...",
+      "CHANGE_APPEARANCE": "Thay đổi giao diện",
+      "LIGHT_MODE": "Chế độ sáng",
+      "DARK_MODE": "Chế độ tối",
+      "SYSTEM_MODE": "Chế độ hệ thống",
+      "SNOOZE_NOTIFICATION": "Tạm dừng thông báo"
     }
   },
   "DASHBOARD_APPS": {
     "LOADING_MESSAGE": "Đang tải dữ liệu..."
   },
   "COMMON": {
-    "OR": "Or",
+    "OR": "Hoặc",
     "CLICK_HERE": "click vào đây"
   }
 }

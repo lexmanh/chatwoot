@@ -13,6 +13,7 @@ import { useBranding } from 'shared/composables/useBranding';
 // components
 import FormInput from '../../components/Form/Input.vue';
 import GoogleOAuthButton from '../../components/GoogleOauth/Button.vue';
+import UEFSsoButton from '../../components/UEFSso/Button.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import NextButton from 'dashboard/components-next/button/Button.vue';
 
@@ -27,6 +28,7 @@ export default {
   components: {
     FormInput,
     GoogleOAuthButton,
+    UEFSsoButton,
     Spinner,
     NextButton,
   },
@@ -77,6 +79,9 @@ export default {
     ...mapGetters({ globalConfig: 'globalConfig/get' }),
     showGoogleOAuth() {
       return Boolean(window.chatwootConfig.googleOAuthClientId);
+    },
+    showUefSso() {
+      return Boolean(window.chatwootConfig.uefSsoClientId);
     },
     showSignupLink() {
       return parseBoolean(window.chatwootConfig.signupEnabled);
@@ -193,14 +198,16 @@ export default {
         </router-link>
       </p>
     </section>
+
     <section
       class="bg-white shadow sm:mx-auto mt-11 sm:w-full sm:max-w-lg dark:bg-n-solid-2 p-11 sm:shadow-lg sm:rounded-lg"
       :class="{
-        'mb-8 mt-15': !showGoogleOAuth,
+        'mb-8 mt-15': !showGoogleOAuth && !showUefSso,
         'animate-wiggle': loginApi.hasErrored,
       }"
     >
       <div v-if="!email">
+        <UEFSsoButton v-if="showUefSso" :show-separator="!showGoogleOAuth" />
         <GoogleOAuthButton v-if="showGoogleOAuth" />
         <form class="space-y-5" @submit.prevent="submitFormLogin">
           <FormInput

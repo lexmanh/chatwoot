@@ -1,6 +1,6 @@
 {
   "LOGIN": {
-    "TITLE": "Đăng nhập Chatwoot",
+    "TITLE": "Đăng nhập UEFSupportHub",
     "EMAIL": {
       "LABEL": "Email",
       "PLACEHOLDER": "example{'@'}companyname.com",
@@ -11,14 +11,15 @@
       "PLACEHOLDER": "Mật khẩu"
     },
     "API": {
-      "SUCCESS_MESSAGE": "Login successful",
-      "ERROR_MESSAGE": "Could not connect to Woot server. Please try again.",
-      "UNAUTH": "Username or password is incorrect. Please try again."
+      "SUCCESS_MESSAGE": "Đăng nhập thành công",
+      "ERROR_MESSAGE": "Không thể kết nối với máy chủ Woot. Vui lòng thử lại.",
+      "UNAUTH": "Tên người dùng hoặc mật khẩu không chính xác. Vui lòng thử lại."
     },
     "OAUTH": {
-      "GOOGLE_LOGIN": "Login with Google",
-      "BUSINESS_ACCOUNTS_ONLY": "Please use your company email address to login",
-      "NO_ACCOUNT_FOUND": "We couldn't find an account for your email address."
+      "GOOGLE_LOGIN": "Đăng nhập bằng Google",
+      "BUSINESS_ACCOUNTS_ONLY": "Vui lòng sử dụng địa chỉ email công ty của bạn để đăng nhập",
+      "NO_ACCOUNT_FOUND": "Chúng tôi không thể tìm thấy tài khoản cho địa chỉ email của bạn.",
+      "UEF_SSO_LOGIN": "Đăng nhập với UEF ID"
     },
     "FORGOT_PASSWORD": "Quên mật khẩu?",
     "CREATE_NEW_ACCOUNT": "Tạo mới tài khoản",

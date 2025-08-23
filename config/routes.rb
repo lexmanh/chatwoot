@@ -238,6 +238,10 @@ Rails.application.routes.draw do
             resource :authorization, only: [:create]
           end
 
+          namespace :keycloak do
+            resource :authorization, only: [:create]
+          end
+
           namespace :instagram do
             resource :authorization, only: [:create]
           end
@@ -521,6 +525,8 @@ Rails.application.routes.draw do
 
   get 'microsoft/callback', to: 'microsoft/callbacks#show'
   get 'google/callback', to: 'google/callbacks#show'
+  get 'keycloak/callback', to: 'keycloak/callbacks#show' # add keycloak (uef)
+  get 'uef/callback', to: 'uef/callbacks#show' # add keycloak (uef)
   get 'instagram/callback', to: 'instagram/callbacks#show'
   get 'notion/callback', to: 'notion/callbacks#show'
   # ----------------------------------------------------------------------

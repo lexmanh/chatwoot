@@ -19,6 +19,8 @@ export function useChannelIcon(inbox) {
   const providerIconMap = {
     microsoft: 'i-ri-microsoft-fill',
     google: 'i-ri-google-fill',
+    uef: 'i-ri-uef-fill',
+    zoho: 'i-ri-zoho-fill',
   };
 
   const channelIcon = computed(() => {

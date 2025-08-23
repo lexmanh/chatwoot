@@ -1,6 +1,6 @@
 {
   "GENERAL": {
-    "SHOWING_RESULTS": "Showing {firstIndex}-{lastIndex} of {totalCount} items",
+    "SHOWING_RESULTS": "Hiển thị {start} - {end} của {total} kết quả",
     "PHONE_INPUT": {
       "PLACEHOLDER": "Tìm kiếm",
       "EMPTY_STATE": "Không tìm thấy kết quả"
