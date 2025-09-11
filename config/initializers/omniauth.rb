@@ -1,3 +1,7 @@
+# OmniAuth configuration
+# Sets the full host URL for callbacks and proper redirect handling
+OmniAuth.config.full_host = ENV.fetch('FRONTEND_URL', 'http://localhost:3000')
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   # OmniAuth.config.allowed_request_methods = [:get]
   # # Google OAuth2
