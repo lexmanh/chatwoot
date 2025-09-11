@@ -171,7 +171,9 @@ gem 'omniauth-google-oauth2', '>= 1.1.3'
 gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.2'
 
 # need for Keycloak (UEF ID) auth
-gem 'omniauth-keycloak', '>= 1.5.3'
+# gem 'omniauth-keycloak', '>= 1.5.3'
+# gem 'ominiauth-uef', '>= 1.0.0' # use local gem for now'
+gem 'omniauth-uef', path: '~/Documents/GitHub/omniauth_uef'
 
 ## Gems for reponse bot
 # adds cosine similarity to postgres using vector extension
@@ -254,3 +256,5 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen'
 end
+
+gem 'activerecord-session_store'

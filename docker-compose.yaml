@@ -86,13 +86,16 @@ services:
     image: pgvector/pgvector:pg16
     restart: always
     ports:
-      - '5432:5432'
+      - '15432:5432'
     volumes:
       - postgres:/data/postgres
     environment:
       - POSTGRES_DB=chatwoot
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123456
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
 
   redis:
     image: redis:alpine
@@ -102,7 +105,7 @@ services:
     volumes:
       - redis:/data/redis
     ports:
-      - '6379:6379'
+      - '16379:6379'
 
   mailhog:
     image: mailhog/mailhog

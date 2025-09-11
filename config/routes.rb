@@ -238,7 +238,7 @@ Rails.application.routes.draw do
             resource :authorization, only: [:create]
           end
 
-          namespace :keycloak do
+          namespace :uef do
             resource :authorization, only: [:create]
           end
 
@@ -525,8 +525,6 @@ Rails.application.routes.draw do
 
   get 'microsoft/callback', to: 'microsoft/callbacks#show'
   get 'google/callback', to: 'google/callbacks#show'
-  get 'keycloak/callback', to: 'keycloak/callbacks#show' # add keycloak (uef)
-  get 'uef/callback', to: 'uef/callbacks#show' # add keycloak (uef)
   get 'instagram/callback', to: 'instagram/callbacks#show'
   get 'notion/callback', to: 'notion/callbacks#show'
   # ----------------------------------------------------------------------
@@ -591,4 +589,9 @@ Rails.application.routes.draw do
   # ----------------------------------------------------------------------
   # Routes for testing
   resources :widget_tests, only: [:index] unless Rails.env.production?
+
+  # omniauth
+  # get '/auth/:provider/callback', to: 'sessions#create'
+  # get '/auth/failure', to: redirect('/')
+  # get '/logout', to: 'sessions#destroy'
 end

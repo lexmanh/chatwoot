@@ -17,16 +17,16 @@ RSpec.describe 'DeviseOverrides::OmniauthCallbacksController', type: :request do
       }
     )
 
-    # # + keycloak_openid
-    # OmniAuth.config.mock_auth[:keycloak_openid] = OmniAuth::AuthHash.new(
-    #   provider: 'keycloak_openid',
-    #   uid: '123545',
-    #   info: {
-    #     name: 'test',
-    #     email: for_email,
-    #     image: 'https://example.com/image.jpg'
-    #   }
-    # )
+    # + uefid
+    OmniAuth.config.mock_auth[:uefid] = OmniAuth::AuthHash.new(
+      provider: 'uefid',
+      uid: '123545',
+      info: {
+        name: 'test',
+        email: for_email,
+        image: 'https://example.com/image.jpg'
+      }
+    )
   end
 
   before do
