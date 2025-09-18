@@ -25,7 +25,7 @@ GIT
 PATH
   remote: ../omniauth_uef
   specs:
-    omniauth-uef (1.0.0.pre.dev.pre.25)
+    omniauth-uef (1.0.0.pre.dev.pre.26)
       faraday
       json-jwt (> 1.13.0)
       omniauth (>= 2.0)
@@ -1084,9 +1084,8 @@ DEPENDENCIES
   omniauth-oauth2
   omniauth-rails_csrf_protection (~> 1.0, >= 1.0.2)
   omniauth-saml
-  opensearch-ruby
-  pg
   omniauth-uef!
+  opensearch-ruby
   pg (>= 1.6.0)
   pg_search
   pgvector
