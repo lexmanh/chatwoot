@@ -17,5 +17,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            ENV.fetch('UEF_SSO_CLIENT_SECRET', nil),
            client_options: {
              # any other options such as site, authorize_url, token_url can be configured here
-           }
+           },
+           name: 'uef'
+  #  scope: 'openid email profile',
+  #  strategy_class: OmniAuth::Strategies::UefId,
+  #  skip_jwt: ENV.fetch('UEF_SSO_SKIP_JWT', 'false') == 'true'
 end

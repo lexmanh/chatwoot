@@ -8,7 +8,6 @@ class DeviseOverrides::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCa
   end
 
   def redirect_callbacks
-
     # debug to see what is in the auth hash
     Rails.logger.debug(request.env['omniauth.auth'])
 
@@ -105,7 +104,6 @@ class DeviseOverrides::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCa
     session.delete('dta.omniauth.auth')
     super
   end
-
 end
 
 DeviseOverrides::OmniauthCallbacksController.prepend_mod_with('DeviseOverrides::OmniauthCallbacksController')

@@ -179,7 +179,8 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.2'
 # need for Keycloak (UEF ID) auth
 # gem 'omniauth-keycloak', '>= 1.5.3'
 # gem 'ominiauth-uef', '>= 1.0.0' # use local gem for now'
-gem 'omniauth-uef', path: '~/Documents/GitHub/omniauth_uef'
+# gem 'omniauth-uef', path: '~/Documents/GitHub/omniauth_uef'
+gem 'omniauth-uef', git: 'https://github.com/uef-edu/omniauth_uef', branch: 'main'
 
 ## Gems for reponse bot
 # adds cosine similarity to postgres using vector extension

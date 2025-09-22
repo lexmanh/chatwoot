@@ -123,11 +123,11 @@
         "CUSTOM_EMAIL_DOMAIN_ENABLED": "Bạn có thể nhận email trong miền tùy chỉnh của mình ngay bây giờ."
       }
     },
-    "UPDATE_CHATWOOT": "Đã có bản cập nhật {latestUEFSupportHubVersion} cho UEFSupportHub. Vui lòng cập nhật phiên bản của bạn.",
+    "UPDATE_CHATWOOT": "Đã có bản cập nhật {latestUEF HUBVersion} cho UEF HUB. Vui lòng cập nhật phiên bản của bạn.",
     "LEARN_MORE": "Tìm hiểu thêm",
-    "PAYMENT_PENDING": "Thanh toán của bạn đang chờ xử lý. Vui lòng cập nhật thông tin thanh toán của bạn để tiếp tục sử dụng UEFSupportHub",
-    "UPGRADE": "Nâng cấp để tiếp tục sử dụng UEFSupportHub",
-    "LIMITS_UPGRADE": "Tài khoản của bạn đã vượt quá giới hạn sử dụng, vui lòng nâng cấp gói của bạn để tiếp tục sử dụng UEFSupportHub",
+    "PAYMENT_PENDING": "Thanh toán của bạn đang chờ xử lý. Vui lòng cập nhật thông tin thanh toán của bạn để tiếp tục sử dụng UEF HUB",
+    "UPGRADE": "Nâng cấp để tiếp tục sử dụng UEF HUB",
+    "LIMITS_UPGRADE": "Tài khoản của bạn đã vượt quá giới hạn sử dụng, vui lòng nâng cấp gói của bạn để tiếp tục sử dụng UEF HUB",
     "OPEN_BILLING": "Mở thanh toán"
   },
   "FORMS": {

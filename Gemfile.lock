@@ -22,10 +22,12 @@ GIT
       devise (>= 4.0.0, < 5.0.0)
       railties (>= 5.0.0, < 8.0.0)
 
-PATH
-  remote: ../omniauth_uef
+GIT
+  remote: https://github.com/uef-edu/omniauth_uef
+  revision: 96cd6e9404f185d793f05d5ea1948d65bf5fab14
+  branch: main
   specs:
-    omniauth-uef (1.0.0.pre.dev.pre.26)
+    omniauth-uef (1.0.1)
       faraday
       json-jwt (> 1.13.0)
       omniauth (>= 2.0)
