@@ -426,7 +426,6 @@
   description: 'The redirect URI configured in your Google OAuth app'
 ## ------ End of Configs added for Google OAuth ------ ##
 
-
 ## ------ Configs added for UEF SSO ----------##
 - name: UEF_SSO_CLIENT_ID
   display_title: 'UEF SSO Client ID'
@@ -460,22 +459,3 @@
   locked: false
   description: 'Zone ID for the Cloudflare domain'
 ## ------ End of Configs added for Cloudflare ------ ##
-
-## ------ Configs added for UEF ID ------ ##
-- name: UEF_ID_OAUTH_CLIENT_ID
-  display_title: 'UEF ID OAuth Client ID'
-  value:
-  locked: false
-  description: 'UEF ID OAuth Client ID for authentication'
-- name: UEF_ID_OAUTH_CLIENT_SECRET
-  display_title: 'UEF ID OAuth Client Secret'
-  value:
-  locked: false
-  description: 'UEF ID OAuth Client Secret for authentication'
-  type: secret
-- name: UEF_ID_OAUTH_REDIRECT_URI
-  display_title: 'UEF ID OAuth Redirect URI'
-  value:
-  locked: false
-  description: 'The redirect URI configured in your UEF ID OAuth app'
-## ------ End of Configs added for UEF ID ------ ##

@@ -1,19 +1,20 @@
-# UEF Integration
-# This module provides methods to interact with the UEF OAuth2 client.
 module UefConcern
   extend ActiveSupport::Concern
 
-  included do
-    helper_method :uef_client
+  def uef_client
+    app_id = GlobalConfigService.load('UEF_SSO_CLIENT_ID', nil)
+    app_secret = GlobalConfigService.load('UEF_SSO_CLIENT_SECRET', nil)
+
+    ::OAuth2::Client.new(app_id, app_secret, {
+                           site: 'https://sso.uef.edu.vn  ',
+                           authorize_url: '/realms/university/protocol/openid-connect/auth',
+                           token_url: '/realms/university/protocol/openid-connect/token'
+                         })
   end
 
-  def uef_client
-    @uef_client ||= OAuth2::Client.new(
-      ENV.fetch('UEF_SSO_CLIENT_ID', nil),
-      ENV.fetch('UEF_SSO_CLIENT_SECRET', nil),
-      site: ENV.fetch('UEF_SSO_SITE', 'https://sso.uef.edu.vn'),
-      authorize_url: '/realms/university/protocol/openid-connect/auth',
-      token_url: '/realms/university/protocol/openid-connect/token'
-    )
+  private
+
+  def scope
+    'email profile openid'
   end
 end
